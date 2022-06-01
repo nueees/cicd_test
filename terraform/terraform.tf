@@ -7,7 +7,7 @@ terraform {
       version = "~> 3.48.0"
     }
     
-  }
+}
   
   backed "s3" {
   
