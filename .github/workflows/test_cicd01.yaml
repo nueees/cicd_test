@@ -1,7 +1,10 @@
 name: Unit Test
 
 on: [ push, pull_request ]
-
+env:
+  S3_STATE: 'secho-gcs-jira-metrics-state'
+  AWS_REGION: 'eu-central-1'
+  
 jobs:
   terraform:
     name: Terraform changes
