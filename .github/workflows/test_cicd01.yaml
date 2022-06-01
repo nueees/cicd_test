@@ -31,3 +31,7 @@ jobs:
     - name: 'Terraform Init'
       run: terraform init
       working-directory: ${{ env.working-directory }}
+    
+    - name: 'Terraform Apply'
+      run: terraform apply
+      
