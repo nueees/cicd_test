@@ -3,18 +3,27 @@ name: Unit Test
 on: [ push, pull_request ]
 
 jobs:
-  lambda-deployment-changes:
+  terraform:
     name: Terraform changes
     runs-on: self-hosted
-    
-    env:
-      working-directory: './nueees-tools'
-
+    defaults:
+      run:
+        working-directory: './terraform'
+        
     steps:
     - name: Checkout main repo
       uses: actions/checkout@v2
     
-    - uses: hashicorp/setup-terraform@v1.2.1
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1.2.1
+    
+    - name: "Configure AWS Credentials"
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.S3_AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.S3_AWS_SECRET_ACCESS_KEY_ID }}
+        aws-region: eu-central-1
+    
 
     - name: 'Terraform Init'
       run: terraform init
