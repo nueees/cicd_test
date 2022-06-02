@@ -19,7 +19,6 @@ terraform {
 
 provider "aws" {
   region = "eu-central-1"
-  profile = "secho-tools"
   allowed_account_ids = ["623160492249"]
 }
 
