@@ -6,3 +6,4 @@ resource "aws_s3_bucket" "tap_jira_states" {
     enabled = true # Prevent from deleting tfstate file
   }
 }
+
