@@ -17,7 +17,7 @@ terraform {
     dynamodb_table = "secho-jira-metrics"
 }
 
-provide "aws" {
+provider "aws" {
   region = "eu-central-1"
 
   allowed_account_ids = ["623160492249"]
