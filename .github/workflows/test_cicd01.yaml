@@ -6,9 +6,6 @@ on:
       - master
     paths:
       - 'terraform/**'
-env:
-  S3_STATE: 'secho-gcs-jira-metrics-state'
-  AWS_REGION: 'eu-central-1'
   
 jobs:
   terraform:
@@ -22,12 +19,11 @@ jobs:
       working-directory: './terraform'
     
     steps:
-    
     - name: Checkout main repo
       uses: actions/checkout@v2
     
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1.2.1
+      uses: hashicorp/setup-terraform@v1
     
     - name: "Configure AWS Credentials"
       uses: aws-actions/configure-aws-credentials@v1
@@ -35,17 +31,9 @@ jobs:
         aws-access-key-id: ${{ secrets.S3_AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.S3_AWS_SECRET_ACCESS_KEY_ID }}
         aws-region: eu-central-1
-    
-
+        
     - name: 'Terraform Init'
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.S3_AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_AWS_SECRET_ACCESS_KEY_ID }}
       run: terraform init
     
     - name: 'Terraform Apply'
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.S3_AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_AWS_SECRET_ACCESS_KEY_ID }}
       run: terraform apply -auto-approve
-      
