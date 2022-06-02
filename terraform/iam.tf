@@ -1,4 +1,4 @@
-# "platform-jira-metrics-tf"
+# "platform-jira-metrics-tf" name
 resource "aws_iam_user" "secho_jira_metrics_s3" {
   name  = "secho-jira-metrics-s3"
 }
