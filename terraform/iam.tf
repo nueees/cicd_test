@@ -35,7 +35,6 @@ resource "aws_iam_policy" "secho_jira_metrics_s3_policy" {
 EOF
 }
 
-// secho_jira_metrics_s3가 사용하게될 policy
 resource "aws_iam_user_policy_attachment" "secho_jira_metrics_s3_policy" {
   user       = aws_iam_user.secho_jira_metrics_s3.name
   policy_arn = aws_iam_policy.secho_jira_metrics_s3_policy.arn
