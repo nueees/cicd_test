@@ -1,6 +1,6 @@
 # "platform-jira-metrics-tf" name
 resource "aws_iam_user" "secho_jira_metrics_s3" {
-  name  = "secho-jira-metrics-s3"
+  name  = "terraform"
 }
 
 resource "aws_iam_policy" "secho_jira_metrics_s3_policy" {
