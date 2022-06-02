@@ -7,3 +7,14 @@ resource "aws_s3_bucket" "tap_jira_states" {
   }
 }
 
+# DynamoDB for terraform state lock
+resource "aws_dynamodb_table" "tap_jira_state_lock" {
+  name           = "secho-jira-metrics-tf-lock"
+  hash_key       = "LockID"
+  billing_mode   = "PAY_PER_REQUEST"
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+}
