@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "eu-central-1"
-}
-
 # S3 bucket for backend
 resource "aws_s3_bucket" "tap_jira_states" {
   bucket = "secho-gcs-jira-metrics-state"
