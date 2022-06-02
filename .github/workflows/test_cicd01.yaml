@@ -20,6 +20,9 @@ jobs:
     
     env:
       working-directory: './terraform'
+      AWS_ACCESS_KEY_ID: ${{ secrets.S3_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_AWS_ACCESS_KEY_ID }}
+      aws-region: eu-central-1
     
     steps:
     
@@ -31,10 +34,6 @@ jobs:
     
     - name: "Configure AWS Credentials"
       uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.S3_AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.S3_AWS_SECRET_ACCESS_KEY_ID }}
-        aws-region: eu-central-1
     
 
     - name: 'Terraform Init'
